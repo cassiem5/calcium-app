@@ -69,18 +69,24 @@ def process_field_data(baseline_text, data_text):
 # ---- UI Layout ----
 tabs = st.tabs([f"Coverslip {i}" for i in range(1, 5)])
 
-for tab in tabs:
+for i, tab in enumerate(tabs, start=1):  # Use index 'i' instead of tab object
     with tab:
         for row_num in range(1, 5):
             st.markdown(f"### Field {row_num}")
             col1, col2 = st.columns(2)
 
             with col1:
-                baseline_text = st.text_area(f"Paste Baseline Data (times & values) - Field {row_num}", key=f"baseline_{tab}_{row_num}")
+                baseline_text = st.text_area(
+                    f"Paste Baseline Data (times & values) - Field {row_num}",
+                    key=f"baseline_{i}_{row_num}"
+                )
             with col2:
-                data_text = st.text_area(f"Paste Data (times & values) - Field {row_num}", key=f"data_{tab}_{row_num}")
+                data_text = st.text_area(
+                    f"Paste Data (times & values) - Field {row_num}",
+                    key=f"data_{i}_{row_num}"
+                )
 
-            if st.button(f"Process Field {row_num}", key=f"process_{tab}_{row_num}"):
+            if st.button(f"Process Field {row_num}", key=f"process_{i}_{row_num}"):
                 df = process_field_data(baseline_text, data_text)
                 if df is not None:
                     st.dataframe(df, use_container_width=True)
