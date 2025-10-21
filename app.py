@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 st.set_page_config(layout="wide")
-st.title("Calcium Imaging Processor")
+st.title("Calcium Imaging Data Processor")
 
 # ---- Helper Functions ----
 def parse_pasted_data(pasted_text):
@@ -94,4 +94,4 @@ for i, tab in enumerate(tabs, start=1):  # Use index 'i' instead of tab object
                     st.warning("Invalid or missing input for this field.")
 
 st.markdown("---")
-st.caption("Built with ❤️ for calcium imaging analysis")
+st.caption("❤️")
